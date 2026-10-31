@@ -1,0 +1,11 @@
+# Formatter and linter settings for this repository (https://docs.astral.sh/ruff/).
+#   ruff format .
+#   ruff check .
+line-length = 100
+target-version = "py39"
+
+[lint]
+# Pyflakes (F) plus syntax-level pycodestyle errors (E9). Import sorting (I) is
+# deliberately not enabled: several scripts set up sys.path or the matplotlib
+# backend before importing project modules, so import order is significant.
+select = ["E9", "F"]

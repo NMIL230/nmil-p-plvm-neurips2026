@@ -1,0 +1,19 @@
+name: tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          environment-file: environment.yml
+          activate-environment: plvm
+      - name: Lint
+        shell: bash -el {0}
+        run: ruff check .
+      - name: Test
+        shell: bash -el {0}
+        run: pytest tests

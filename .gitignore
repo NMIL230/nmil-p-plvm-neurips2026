@@ -1,0 +1,62 @@
+# ---------------------------------------------------------------------------
+# Artifacts: datasets, trained models and generated outputs are not tracked.
+# Download the artifact bundle into artifacts/ (or set PLVM_ARTIFACT_ROOT).
+# ---------------------------------------------------------------------------
+artifacts/
+/models
+manuscript_figures/
+embedding_cache/
+.cache/
+
+# Data, model and figure files anywhere in the tree
+*.csv
+*.json
+*.jsonl
+*.txt
+*.out
+*.pkl
+*.pickle
+*.npz
+*.npy
+*.pt
+*.pth
+*.zip
+*.gz
+*.tar
+*.tar.*
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.svg
+
+# Logs
+*.log
+*.logs
+*.err
+
+# ---------------------------------------------------------------------------
+# Python, test and tool caches
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Environments
+.env
+.venv
+env/
+venv/
+
+# Editors and OS files
+.claude/
+.cursor/
+.vscode/
+.idea/
+.DS_Store

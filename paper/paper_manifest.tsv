@@ -1,0 +1,38 @@
+# Paper manifest: every figure, table and in-text number of the paper, in the order they appear in the paper.
+# Read by make_paper.py. Columns (tab-separated):
+#   job_id       unique id, used by `make_paper.py --only`
+#   paper_items  figures, tables and sections the job produces ("; "-separated)
+#   kind         figure | table | in_text | static (static rows are listed, never run)
+#   command      generator script under paper/ followed by its arguments; "-" for static rows
+#   note         what the job writes (under manuscript_figures/ unless it names the artifact tree), or why a static row has no generator
+# Jobs run from the repository root. in_text reads the outputs of the earlier jobs, so it runs last.
+job_id	paper_items	kind	command	note
+fig01	Fig 1	static	-	architecture diagram (static asset)
+fig02	Fig 2	figure	figures/fig02_example_process_traces.py	figures/Figure_2.pdf
+fig03a_fig03c	Fig 3a; Fig 3c	figure	figures/fig03a_fig03c_firestation_label_panels.py	figures/Figure_3a.pdf, Figure_3c.pdf
+fig03b	Fig 3b	figure	figures/fig03b_planner_hopper_examples.py	figures/Figure_3b.pdf
+fig04a	Fig 4a	figure	figures/fig04a_minigrid_foraging_task.py	figures/Figure_4a.pdf
+fig04b	Fig 4b	figure	figures/fig04b_minigrid_cleaning_task.py	figures/Figure_4b.pdf
+fig04c	Fig 4c	figure	figures/fig04c_minigrid_simulated_agents.py	figures/Figure_4c.pdf
+fig05	Fig 5a; Fig 5b	figure	figures/fig05_combined_overview.py	figures/Figure_5.pdf
+fig05c	Fig 5c	figure	figures/fig05c_latent_space.py	figures/Figure_5c.pdf (caption AUROC/silhouette: job tab10)
+fig06_fig08_fig09_fig10	Fig 6; Fig 8; Fig 9; Fig 10	figure	figures/fig06_fig08_fig09_fig10_powerwash_accuracy_curves.py --manuscript_figure	figures/Figure_6.pdf, Figure_8.pdf, Figure_9.pdf, Figure_10.pdf; curve CSVs under analysis/model_training_analysis/
+fig07	Fig 7	figure	figures/fig07_simulation_accuracy_curves.py --manuscript_figure	figures/Figure_7.pdf; curve CSV under analysis/model_training_analysis/
+tab01	Table 1	table	tables/table01_outcome_proxy.py	tables/Table_1.{csv,tex}
+tab02	Table 2	table	tables/table02_prediction_summary.py	tables/Table_2.{csv,tex,md}, Table_2_values.csv
+tab03_tab07	Table 3; Table 4; Table 5; Table 6; Table 7	static	-	cohort counts and hyperparameters (reported from the data and configs; no generator)
+tab08	Table 8	table	tables/table08_encoder_metrics.py	tables/Table_8.{csv,tex,md}, Table_8_values.csv
+tab09_matched_head	Table 9 (matched-head column); Sec 5.2	table	tables/table09_matched_head_gain.py	tables/cross_domain_combination_gain_analysis*.csv (incl. the PowerWash matched-head gain)
+tab09	Table 9	table	tables/table09_simulation_complementarity.py	tables/Table_9.{csv,tex,md}, Table_9_values.csv
+tab10	Table 10; Fig 5c caption	table	tables/table10_robustness.py	tables/table10_robustness/
+tab11	Table 11	table	tables/table11_label_sensitivity.py	tables/table11_label_sensitivity/
+tab12	Table 12	table	tables/table12_head_capacity_ablation.py	tables/head_capacity_ablation*.{csv,md,tex} (needs tabulate)
+tab13	Table 13	table	tables/table13_storybook_summary.py	tables/Table_13.{csv,tex,md}, powerwash_summary_storybook*
+tab14	Table 14; Sec 5.1	table	tables/table14_feature_ladder.py --tag full	tables/table14_feature_ladder/ (about 3 min)
+tab14_shuffled	Table 14; Sec 5.1	table	tables/table14_feature_ladder.py --shuffle_seed 0 --tag shuffled	tables/table14_feature_ladder/ (ordering ablation)
+tab14_latex	Table 14	table	tables/table14_feature_ladder_latex.py	tables/table14_feature_ladder/navstyle_ladder_table.tex
+tab15	Table 15	static	-	simulation parameters (reported from the data and configs; no generator)
+appD6_navscores	App D.6	in_text	tables/appD6_navigation_style_scores.py	artifact tree powerwash/outputs/navigation_style/ (per-player navigation-style scores read by appD6_stability and appD6_carry_forward)
+appD6_stability	App D.6	in_text	tables/appD6_label_stability.py --cohort plvm_3class --tag median_cohort2187	tables/appD6_label_stability/ (ICC, kappa, % same label on the 2,187-player cohort)
+appD6_carry_forward	App D.6	in_text	tables/appD6_carry_forward.py	tables/appD6_carry_forward/
+in_text	In-text numbers	in_text	tables/in_text_numbers.py	tables/in_text_numbers.{json,md}
